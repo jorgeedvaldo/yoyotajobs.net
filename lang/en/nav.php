@@ -32,4 +32,8 @@ return [
     'footer_support' => 'Support',
     'footer_contact' => 'Contact',
     'footer_rights' => 'All rights reserved.',
+
+    'promo_title' => 'Don\'t miss a job',
+    'promo_description' => 'Explore the latest job openings in Portugal, Spain, France and across Europe.',
+    'promo_cta' => 'Browse job listings',
 ];

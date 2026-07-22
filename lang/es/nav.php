@@ -32,4 +32,8 @@ return [
     'footer_support' => 'Soporte',
     'footer_contact' => 'Contacto',
     'footer_rights' => 'Todos los derechos reservados.',
+
+    'promo_title' => 'No te pierdas ninguna vacante',
+    'promo_description' => 'Descubre las últimas ofertas de empleo en Portugal, España, Francia y en toda Europa.',
+    'promo_cta' => 'Ver ofertas de empleo',
 ];
