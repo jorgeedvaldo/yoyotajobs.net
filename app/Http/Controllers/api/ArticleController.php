@@ -27,7 +27,7 @@ class ArticleController extends Controller
         $article->title = $request->input('title');
         $article->description = $request->input('description');
         $article->photo = $request->input('photo', 'article.jpg');
-        // country_id nao esta no fillable; definimos explicitamente (default 1 = Angola)
+        // country_id nao esta no fillable; definimos explicitamente (default 1 = Portugal)
         $article->country_id = (int) $request->input('country_id', 1);
         $article->save();
 

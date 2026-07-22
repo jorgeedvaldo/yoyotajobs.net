@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'tracking' => [
+        'ga4_id' => env('GA4_MEASUREMENT_ID'),
+        'adsense_client' => env('ADSENSE_CLIENT_ID'),
+    ],
+
 ];

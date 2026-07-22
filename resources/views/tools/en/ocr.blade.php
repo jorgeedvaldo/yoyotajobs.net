@@ -12,19 +12,21 @@
         <meta name="description" content="Known as Online OCR. A free online tool to convert images and PDFs into text with multi-language support. Here you can perform text recognition, convert images to text, convert PDFs to text, and use a free OCR tool." />
         <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
 
+        @if(config('services.tracking.ga4_id'))
         <!-- Google tag (gtag.js) - GA4 -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZKH9CWSVX"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.tracking.ga4_id') }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-CZKH9CWSVX');
+            gtag('config', '{{ config('services.tracking.ga4_id') }}');
         </script>
+        @endif
 
         <!-- AdSense -->
-        @if($adsEnabled ?? true)
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2118765549976668" crossorigin="anonymous"></script>
+        @if(($adsEnabled ?? true) && config('services.tracking.adsense_client'))
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ config('services.tracking.adsense_client') }}" crossorigin="anonymous"></script>
         @endif
 
         <!-- Open Graph / Facebook -->

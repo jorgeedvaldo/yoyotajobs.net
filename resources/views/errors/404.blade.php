@@ -1,6 +1,6 @@
 @extends('template.app')
 @section('title', 'Página não encontrada')
-@section('description', 'É uma plataforma que reúne oportunidades de emprego no solo angolano, tendo como fonte principal o "Jornal de Angola", criada aos 5 de Dezembro de 2018, a Empregos Yoyota tem ajudado muita gente a encontrar empregos no solo angolano')
+@section('description', 'O YoyotaJobs é uma plataforma que reúne oportunidades de emprego em Portugal, Espanha, França e no resto da Europa, ajudando candidatos a encontrar o seu próximo emprego.')
 @section('content')
 <style>
     * {
@@ -587,7 +587,7 @@
             <!-- Search Form -->
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
-                    <form class="search-form" action="{{ route('search') }}" method="GET">
+                    <form class="search-form" action="{{ lroute('search') }}" method="GET">
                         <input 
                             type="text" 
                             class="search-input" 
@@ -604,7 +604,7 @@
 
             <!-- Action Buttons -->
             <div class="error-actions">
-                <a href="{{ url('/') }}" class="btn btn-dark">
+                <a href="{{ lurl('/') }}" class="btn btn-dark">
                     <i class="bi bi-house me-2"></i>
                     Voltar ao Início
                 </a>
@@ -621,9 +621,9 @@
                             </div>
                             <h4 class="suggestion-title">Vagas de Emprego</h4>
                             <p class="suggestion-description">
-                                Encontre as melhores oportunidades de trabalho em Angola
+                                Encontre as melhores oportunidades de trabalho na Europa
                             </p>
-                            <a href="{{ url('/empregos') }}" class="suggestion-link">
+                            <a href="{{ lurl('empregos') }}" class="suggestion-link">
                                 Ver Vagas <i class="bi bi-arrow-right ms-1"></i>
                             </a>
                         </div>
@@ -653,7 +653,7 @@
                             <p class="suggestion-description">
                                 Crie um currículo profissional e moderno
                             </p>
-                            <a href="{{ url('articles/varios-modelos-de-curriculos-no-word-para-baixar-de-graca') }}" class="suggestion-link">
+                            <a href="{{ lurl('articles') }}" class="suggestion-link">
                                 Ver Modelos <i class="bi bi-arrow-right ms-1"></i>
                             </a>
                         </div>

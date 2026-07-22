@@ -17,8 +17,8 @@ class LandingController extends Controller
 
         $location   = $cfg['name'];
         $type       = $cfg['type'];
-        $exploreUrl = url($cfg['explore']);
-        $pageUrl    = url($cfg['slug']);
+        $exploreUrl = lurl($cfg['explore']);
+        $pageUrl    = lurl($cfg['slug']);
 
         // Ultimas vagas do local
         $query = Job::where('country_id', $cfg['country_id']);
@@ -28,7 +28,7 @@ class LandingController extends Controller
         $listaJobs = $query->orderByRaw('id DESC')->limit(30)->get();
 
         // Helper para gerar links de pesquisa
-        $s = fn ($q) => route('search', ['query' => $q]);
+        $s = fn ($q) => lroute('search', ['query' => $q]);
 
         $relacionadas = $this->relacionadas($location);
         $filtros      = $this->filtros($location, $exploreUrl, $s);
@@ -39,7 +39,7 @@ class LandingController extends Controller
         if ($type === 'country') {
             foreach (config('landings') as $c) {
                 if (($c['type'] ?? null) === 'city' && ($c['country_id'] ?? null) == $cfg['country_id']) {
-                    $cidadesLinks[] = ['name' => $c['name'], 'url' => url($c['slug'])];
+                    $cidadesLinks[] = ['name' => $c['name'], 'url' => lurl($c['slug'])];
                 }
             }
         }
@@ -47,7 +47,7 @@ class LandingController extends Controller
         // Botoes do cabecalho
         $buttons = [
             ['label' => 'Explorar vagas em ' . $location, 'url' => $exploreUrl],
-            ['label' => 'Ver vagas por categoria', 'url' => url('/empregos')],
+            ['label' => 'Ver vagas por categoria', 'url' => lurl('empregos')],
         ];
         if (!empty($cidadesLinks)) {
             $buttons[] = ['label' => 'Ver vagas por cidade', 'url' => $pageUrl . '#cidades'];

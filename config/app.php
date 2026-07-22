@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,24 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'pt',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Idiomas suportados pelo yoyotajobs.net
+    |--------------------------------------------------------------------------
+    |
+    | pt é o idioma por omissão (sem prefixo na URL). Os restantes usam um
+    | prefixo de URL (/en, /fr, /es) definido em App\Http\Middleware\SetLocale.
+    |
+    */
+
+    'supported_locales' => [
+        'pt' => ['name' => 'Português', 'flag' => '🇵🇹'],
+        'en' => ['name' => 'English', 'flag' => '🇬🇧'],
+        'fr' => ['name' => 'Français', 'flag' => '🇫🇷'],
+        'es' => ['name' => 'Español', 'flag' => '🇪🇸'],
+    ],
 
     /*
     |--------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "yoyotajobs/yoyotajobs.net",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "YoyotaJobs - portal de emprego multilingue (PT/EN/FR/ES) para a Europa.",
     "keywords": [
         "framework",
         "laravel"
@@ -30,7 +30,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

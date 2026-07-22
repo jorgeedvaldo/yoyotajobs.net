@@ -15,9 +15,10 @@ class JobController extends Controller
     private function getCountryIdFromCode($country)
     {
         $countries = [
-            'ao' => 1,
-            'br' => 2,
-            'mz' => 3,
+            'pt' => 1,
+            'es' => 2,
+            'fr' => 3,
+            'eu' => 4,
         ];
 
         return $countries[$country] ?? null;
@@ -48,9 +49,10 @@ class JobController extends Controller
     private function getCountryName($country)
     {
         $names = [
-            'ao' => 'Angola',
-            'br' => 'Brasil',
-            'mz' => 'Moçambique',
+            'pt' => 'Portugal',
+            'es' => 'Espanha',
+            'fr' => 'França',
+            'eu' => 'Europa',
         ];
 
         return $names[$country] ?? null;
@@ -75,21 +77,21 @@ class JobController extends Controller
         return view('jobs', compact('jobs', 'categories', 'country', 'title'));
     }
 
-    public function vagasAngola()
+    public function vagasPortugal()
     {
-        // Landing SEO. Reaproveita o cache das ultimas vagas de Angola.
+        // Landing SEO. Reaproveita o cache das ultimas vagas (pais por omissao = Portugal).
         $jobs = Job::getCachedLatest();
         $categories = Category::getCachedAll();
 
-        // Interligacao das provincias de Angola (a partir de config/landings.php)
+        // Interligacao das cidades de Portugal (a partir de config/landings.php)
         $cidadesLinks = [];
         foreach (config('landings') as $c) {
             if (($c['type'] ?? null) === 'city' && ($c['country_id'] ?? null) == 1) {
-                $cidadesLinks[] = ['name' => $c['name'], 'url' => url($c['slug'])];
+                $cidadesLinks[] = ['name' => $c['name'], 'url' => lurl($c['slug'])];
             }
         }
 
-        return view('vagas-de-emprego-em-angola', compact('jobs', 'categories', 'cidadesLinks'));
+        return view('vagas-de-emprego-em-portugal', compact('jobs', 'categories', 'cidadesLinks'));
     }
 
     public function getById($id)
@@ -177,7 +179,7 @@ class JobController extends Controller
 
     public function feedGenerator()
     {
-        // Feed com vagas (Angola, Brasil e Mocambique) e artigos, ordenados
+        // Feed com vagas (Portugal, Espanha, Franca e Europa) e artigos, ordenados
         // por data. Em cache 30 min (invalidado ao criar/editar vaga ou artigo).
         $items = Cache::remember('rss_feed_items', 1800, function () {
             $jobs = Job::orderByRaw('id DESC')->limit(500)->get()->map(function ($job) {

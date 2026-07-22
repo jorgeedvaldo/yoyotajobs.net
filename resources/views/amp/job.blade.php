@@ -1851,7 +1851,7 @@
   <body>
 	  @if($adsEnabled ?? true)
 	  <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-2118765549976668">
+        data-ad-client="{{ config('services.tracking.adsense_client') }}">
 </amp-auto-ads>
 	  @endif
     <!-- Start Navbar -->

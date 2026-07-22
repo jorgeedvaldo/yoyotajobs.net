@@ -12,66 +12,76 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\OcrController;
 use App\Http\Controllers\TermController;
+use App\Http\Middleware\SetLocale;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| O portal e multilingue (pt/en/fr/es). As rotas do site sao definidas uma
+| unica vez em registerSiteRoutes() e registadas 4 vezes: sem prefixo para
+| pt (idioma por omissao) e com prefixo /en, /fr, /es para os restantes.
+| Os nomes das rotas ganham o prefixo do idioma (ex: "en.search"), exceto
+| em pt, que mantem o nome "canonico" (ex: "search"). Usa o helper lroute()
+| para resolver o nome certo consoante o idioma atual.
 |
 */
 
+function registerSiteRoutes(?string $namePrefix = null): void
+{
+    $name = fn (string $base) => $namePrefix ? "{$namePrefix}.{$base}" : $base;
 
-Route::get('/empregos/aberto-o-concurso-publico-da-policia-nacional-de-angola', function () {
-    return redirect('/articles/policia-nacional-de-angola-desmente-boatos-de-concurso-publico');
-});
+    Route::get('/', [HomeController::class, 'index'])->name($name('home'));
+    Route::get('/about', [AboutController::class, 'index'])->name($name('about'));
+    Route::get('/terms', [TermController::class, 'index'])->name($name('terms'));
+    Route::get('/api-docs', [ApiDocController::class, 'index'])->name($name('api.docs'));
+    Route::get('/vagas-de-emprego-em-portugal', [JobController::class, 'vagasPortugal'])->name($name('vagas.portugal'));
 
-Route::get('/articles/novo-portal-de-recrutamento-da-policia-nacional-de-angola-revela-um-possivel-recrutamento', function () {
-    return redirect('/articles/policia-nacional-de-angola-desmente-boatos-de-concurso-publico');
-});
+    // Landings SEO de vagas (Portugal, Espanha, Franca e cidades) a partir de config/landings.php
+    foreach ((array) config('landings') as $landingKey => $landingCfg) {
+        Route::get('/' . $landingCfg['slug'], [LandingController::class, 'show'])
+            ->defaults('key', $landingKey)
+            ->name($name('landing.' . $landingKey));
+    }
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/terms', [TermController::class, 'index'])->name('terms');
-Route::get('/api-docs', [ApiDocController::class, 'index'])->name('api.docs');
-Route::get('/vagas-de-emprego-em-angola', [JobController::class, 'vagasAngola'])->name('vagas.angola');
+    Route::get('/categories/{id}', [JobController::class, 'getByCategoryId'])
+        ->where('id', '[0-9]+')
+        ->name($name('categories.show'));
 
-// Landings SEO de vagas (Brasil, Mocambique e cidades) geradas a partir de config/landings.php
-foreach ((array) config('landings') as $landingKey => $landingCfg) {
-    Route::get('/' . $landingCfg['slug'], [LandingController::class, 'show'])
-        ->defaults('key', $landingKey)
-        ->name('landing.' . $landingKey);
+    Route::get('/empregos', [JobController::class, 'index'])->name($name('jobs.index'));
+    Route::get('/empregos/{slug}', [JobController::class, 'getBySlug'])->name($name('jobs.show'));
+
+    Route::get('/{country}/empregos', [JobController::class, 'getByCountry'])
+        ->whereIn('country', ['pt', 'es', 'fr', 'eu'])
+        ->name($name('jobs.country'));
+
+    Route::get('/jobs', [JobController::class, 'index'])->name($name('jobs.index.alias'));
+    Route::get('/jobs/{id}', [JobController::class, 'getById'])
+        ->where('id', '[0-9]+')
+        ->name($name('jobs.show.byid'));
+
+    Route::get('/pesquisar', [JobController::class, 'search'])->name($name('search'));
+
+    Route::get('/articles', [ArticleController::class, 'index'])->name($name('articles.index'));
+    Route::get('/articles/{id}', [ArticleController::class, 'getById'])
+        ->where('id', '[0-9]+')
+        ->name($name('articles.show.byid'));
+    Route::get('/articles/{slug}', [ArticleController::class, 'getBySlug'])->name($name('articles.show'));
+
+    Route::get('/modelos-de-curriculos', [CurriculoController::class, 'index'])->name($name('curriculos.index'));
+    Route::get('/modelos-de-curriculos/{slug}', [CurriculoController::class, 'getBySlug'])->name($name('curriculos.show'));
 }
 
-Route::get('/categories/{id}', [JobController::class, 'getByCategoryId'])
-    ->where('id', '[0-9]+');
+registerSiteRoutes();
 
-Route::get('/empregos', [JobController::class, 'index'])->name('jobs.index');
-Route::get('/empregos/{slug}', [JobController::class, 'getBySlug'])->name('jobs.show');
+foreach (SetLocale::SUPPORTED_LOCALES as $locale) {
+    Route::prefix($locale)->group(function () use ($locale) {
+        registerSiteRoutes($locale);
+    });
+}
 
-Route::get('/{country}/empregos', [JobController::class, 'getByCountry'])
-    ->whereIn('country', ['ao', 'br', 'mz'])
-    ->name('jobs.country');
-
-
-Route::get('/jobs', [JobController::class, 'index']);
-Route::get('/jobs/{id}', [JobController::class, 'getById'])
-    ->where('id', '[0-9]+');
-
-Route::get('/pesquisar', [JobController::class, 'search'])->name('search');
-
-Route::get('/articles', [ArticleController::class, 'index']);
-Route::get('/articles/{id}', [ArticleController::class, 'getById'])
-    ->where('id', '[0-9]+');
-Route::get('/articles/{slug}', [ArticleController::class, 'getBySlug']);
-//Route::get('/articles/{slug}/amp', [ArticleController::class, 'getBySlugAMP']);
-
-Route::get('/modelos-de-curriculos', [CurriculoController::class, 'index']);
-Route::get('/modelos-de-curriculos/{slug}', [CurriculoController::class, 'getBySlug']);
-
+// Ferramentas auxiliares (OCR / quiz / dashboard) - fora do esquema de idiomas acima.
 Route::get('/onlineocr', [OcrController::class, 'index'])->name('ocr');
 Route::get('/quiz', [OcrController::class, 'indexQuizPt'])->name('quiz');
 Route::get('/en/onlineocr', [OcrController::class, 'indexEn'])->name('ocren');
@@ -87,8 +97,6 @@ Route::get('/sitemap-articles-{page}.xml', [SitemapController::class, 'articles'
 Route::get('/sitemap-curriculos-{page}.xml', [SitemapController::class, 'curriculos'])->where('page', '[0-9]+');
 
 Route::get('/feed', [JobController::class, 'feedGenerator'])->name('feed');
-
-
 
 Route::get('/linkstorage', function () {
     Artisan::call('storage:link');

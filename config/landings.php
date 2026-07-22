@@ -2,13 +2,13 @@
 
 /*
 |--------------------------------------------------------------------------
-| Landings SEO de vagas (paises e cidades/estados)
+| Landings SEO de vagas (paises e cidades/distritos)
 |--------------------------------------------------------------------------
 |
 | Registo central das paginas de aterragem geradas pelo LandingController.
 | Cada entrada gera automaticamente: rota, pagina e entrada no sitemap.
 |
-| country_id: 1 = Angola, 2 = Brasil, 3 = Mocambique
+| country_id: 1 = Portugal, 2 = Espanha, 3 = Franca, 4 = Europa (generico)
 | type:       'country' ou 'city'
 | province:   (apenas cidades) termo usado para filtrar as vagas pela
 |             coluna "province".
@@ -18,201 +18,116 @@
 return [
 
     // ---- Paises ----
-    'mocambique' => [
-        'slug' => 'vagas-de-emprego-em-mocambique',
-        'name' => 'Moçambique',
-        'country_id' => 3,
-        'type' => 'country',
-        'explore' => '/mz/empregos',
-    ],
-    'brasil' => [
-        'slug' => 'vagas-de-emprego-no-brasil',
-        'name' => 'Brasil',
+    'espanha' => [
+        'slug' => 'vagas-de-emprego-em-espanha',
+        'name' => 'Espanha',
         'country_id' => 2,
         'type' => 'country',
-        'explore' => '/br/empregos',
+        'explore' => '/es/empregos',
+    ],
+    'franca' => [
+        'slug' => 'vagas-de-emprego-em-franca',
+        'name' => 'França',
+        'country_id' => 3,
+        'type' => 'country',
+        'explore' => '/fr/empregos',
+    ],
+    'europa' => [
+        'slug' => 'vagas-de-emprego-na-europa',
+        'name' => 'Europa',
+        'country_id' => 4,
+        'type' => 'country',
+        'explore' => '/eu/empregos',
     ],
 
-    // ---- Brasil: cidades e estados ----
-    'sao-paulo' => [
-        'slug' => 'vagas-de-emprego-em-sao-paulo',
-        'name' => 'São Paulo', 'country_id' => 2, 'type' => 'city', 'province' => 'São Paulo', 'explore' => '/br/empregos',
+    // Portugal (country_id 1, mercado por omissao) tem uma landing propria e
+    // mais completa em '/vagas-de-emprego-em-portugal', servida pela rota
+    // dedicada JobController::vagasPortugal (ver routes/web.php).
+
+    // ---- Portugal: distritos e cidades ----
+    'lisboa' => [
+        'slug' => 'vagas-de-emprego-em-lisboa',
+        'name' => 'Lisboa', 'country_id' => 1, 'type' => 'city', 'province' => 'Lisboa', 'explore' => '/pt/empregos',
     ],
-    'rio-de-janeiro' => [
-        'slug' => 'vagas-de-emprego-em-rio-de-janeiro',
-        'name' => 'Rio de Janeiro', 'country_id' => 2, 'type' => 'city', 'province' => 'Rio de Janeiro', 'explore' => '/br/empregos',
+    'porto' => [
+        'slug' => 'vagas-de-emprego-no-porto',
+        'name' => 'Porto', 'country_id' => 1, 'type' => 'city', 'province' => 'Porto', 'explore' => '/pt/empregos',
     ],
-    'manaus' => [
-        'slug' => 'vagas-de-emprego-em-manaus',
-        'name' => 'Manaus', 'country_id' => 2, 'type' => 'city', 'province' => 'Manaus', 'explore' => '/br/empregos',
+    'braga' => [
+        'slug' => 'vagas-de-emprego-em-braga',
+        'name' => 'Braga', 'country_id' => 1, 'type' => 'city', 'province' => 'Braga', 'explore' => '/pt/empregos',
     ],
-    'santa-catarina' => [
-        'slug' => 'vagas-de-emprego-em-santa-catarina',
-        'name' => 'Santa Catarina', 'country_id' => 2, 'type' => 'city', 'province' => 'Santa Catarina', 'explore' => '/br/empregos',
+    'coimbra' => [
+        'slug' => 'vagas-de-emprego-em-coimbra',
+        'name' => 'Coimbra', 'country_id' => 1, 'type' => 'city', 'province' => 'Coimbra', 'explore' => '/pt/empregos',
     ],
-    'belo-horizonte' => [
-        'slug' => 'vagas-de-emprego-em-belo-horizonte',
-        'name' => 'Belo Horizonte', 'country_id' => 2, 'type' => 'city', 'province' => 'Belo Horizonte', 'explore' => '/br/empregos',
+    'setubal' => [
+        'slug' => 'vagas-de-emprego-em-setubal',
+        'name' => 'Setúbal', 'country_id' => 1, 'type' => 'city', 'province' => 'Setúbal', 'explore' => '/pt/empregos',
     ],
-    'brasilia' => [
-        'slug' => 'vagas-de-emprego-em-brasilia',
-        'name' => 'Brasília', 'country_id' => 2, 'type' => 'city', 'province' => 'Brasília', 'explore' => '/br/empregos',
+    'faro' => [
+        'slug' => 'vagas-de-emprego-em-faro',
+        'name' => 'Faro', 'country_id' => 1, 'type' => 'city', 'province' => 'Faro', 'explore' => '/pt/empregos',
     ],
-    'salvador' => [
-        'slug' => 'vagas-de-emprego-em-salvador',
-        'name' => 'Salvador', 'country_id' => 2, 'type' => 'city', 'province' => 'Salvador', 'explore' => '/br/empregos',
+    'aveiro' => [
+        'slug' => 'vagas-de-emprego-em-aveiro',
+        'name' => 'Aveiro', 'country_id' => 1, 'type' => 'city', 'province' => 'Aveiro', 'explore' => '/pt/empregos',
     ],
-    'fortaleza' => [
-        'slug' => 'vagas-de-emprego-em-fortaleza',
-        'name' => 'Fortaleza', 'country_id' => 2, 'type' => 'city', 'province' => 'Fortaleza', 'explore' => '/br/empregos',
-    ],
-    'curitiba' => [
-        'slug' => 'vagas-de-emprego-em-curitiba',
-        'name' => 'Curitiba', 'country_id' => 2, 'type' => 'city', 'province' => 'Curitiba', 'explore' => '/br/empregos',
-    ],
-    'porto-alegre' => [
-        'slug' => 'vagas-de-emprego-em-porto-alegre',
-        'name' => 'Porto Alegre', 'country_id' => 2, 'type' => 'city', 'province' => 'Porto Alegre', 'explore' => '/br/empregos',
-    ],
-    'recife' => [
-        'slug' => 'vagas-de-emprego-em-recife',
-        'name' => 'Recife', 'country_id' => 2, 'type' => 'city', 'province' => 'Recife', 'explore' => '/br/empregos',
-    ],
-    'goiania' => [
-        'slug' => 'vagas-de-emprego-em-goiania',
-        'name' => 'Goiânia', 'country_id' => 2, 'type' => 'city', 'province' => 'Goiânia', 'explore' => '/br/empregos',
-    ],
-    'belem' => [
-        'slug' => 'vagas-de-emprego-em-belem',
-        'name' => 'Belém', 'country_id' => 2, 'type' => 'city', 'province' => 'Belém', 'explore' => '/br/empregos',
-    ],
-    'campinas' => [
-        'slug' => 'vagas-de-emprego-em-campinas',
-        'name' => 'Campinas', 'country_id' => 2, 'type' => 'city', 'province' => 'Campinas', 'explore' => '/br/empregos',
-    ],
-    'florianopolis' => [
-        'slug' => 'vagas-de-emprego-em-florianopolis',
-        'name' => 'Florianópolis', 'country_id' => 2, 'type' => 'city', 'province' => 'Florianópolis', 'explore' => '/br/empregos',
-    ],
-    'minas-gerais' => [
-        'slug' => 'vagas-de-emprego-em-minas-gerais',
-        'name' => 'Minas Gerais', 'country_id' => 2, 'type' => 'city', 'province' => 'Minas Gerais', 'explore' => '/br/empregos',
+    'leiria' => [
+        'slug' => 'vagas-de-emprego-em-leiria',
+        'name' => 'Leiria', 'country_id' => 1, 'type' => 'city', 'province' => 'Leiria', 'explore' => '/pt/empregos',
     ],
 
-    // ---- Angola: provincias ----
-    'luanda' => [
-        'slug' => 'vagas-de-emprego-em-luanda',
-        'name' => 'Luanda', 'country_id' => 1, 'type' => 'city', 'province' => 'Luanda', 'explore' => '/ao/empregos',
+    // ---- Espanha: comunidades e cidades ----
+    'madrid' => [
+        'slug' => 'vagas-de-emprego-em-madrid',
+        'name' => 'Madrid', 'country_id' => 2, 'type' => 'city', 'province' => 'Madrid', 'explore' => '/es/empregos',
     ],
-    'benguela' => [
-        'slug' => 'vagas-de-emprego-em-benguela',
-        'name' => 'Benguela', 'country_id' => 1, 'type' => 'city', 'province' => 'Benguela', 'explore' => '/ao/empregos',
+    'barcelona' => [
+        'slug' => 'vagas-de-emprego-em-barcelona',
+        'name' => 'Barcelona', 'country_id' => 2, 'type' => 'city', 'province' => 'Barcelona', 'explore' => '/es/empregos',
     ],
-    'huambo' => [
-        'slug' => 'vagas-de-emprego-em-huambo',
-        'name' => 'Huambo', 'country_id' => 1, 'type' => 'city', 'province' => 'Huambo', 'explore' => '/ao/empregos',
+    'valencia' => [
+        'slug' => 'vagas-de-emprego-em-valencia',
+        'name' => 'Valência', 'country_id' => 2, 'type' => 'city', 'province' => 'Valencia', 'explore' => '/es/empregos',
     ],
-    'huila' => [
-        'slug' => 'vagas-de-emprego-em-huila',
-        'name' => 'Huíla', 'country_id' => 1, 'type' => 'city', 'province' => 'Huíla', 'explore' => '/ao/empregos',
+    'sevilha' => [
+        'slug' => 'vagas-de-emprego-em-sevilha',
+        'name' => 'Sevilha', 'country_id' => 2, 'type' => 'city', 'province' => 'Sevilla', 'explore' => '/es/empregos',
     ],
-    'cabinda' => [
-        'slug' => 'vagas-de-emprego-em-cabinda',
-        'name' => 'Cabinda', 'country_id' => 1, 'type' => 'city', 'province' => 'Cabinda', 'explore' => '/ao/empregos',
+    'bilbau' => [
+        'slug' => 'vagas-de-emprego-em-bilbau',
+        'name' => 'Bilbau', 'country_id' => 2, 'type' => 'city', 'province' => 'Bilbao', 'explore' => '/es/empregos',
     ],
-    'cuanza-sul' => [
-        'slug' => 'vagas-de-emprego-em-cuanza-sul',
-        'name' => 'Cuanza Sul', 'country_id' => 1, 'type' => 'city', 'province' => 'Cuanza Sul', 'explore' => '/ao/empregos',
-    ],
-    'cuanza-norte' => [
-        'slug' => 'vagas-de-emprego-em-cuanza-norte',
-        'name' => 'Cuanza Norte', 'country_id' => 1, 'type' => 'city', 'province' => 'Cuanza Norte', 'explore' => '/ao/empregos',
-    ],
-    'malanje' => [
-        'slug' => 'vagas-de-emprego-em-malanje',
-        'name' => 'Malanje', 'country_id' => 1, 'type' => 'city', 'province' => 'Malanje', 'explore' => '/ao/empregos',
-    ],
-    'uige' => [
-        'slug' => 'vagas-de-emprego-em-uige',
-        'name' => 'Uíge', 'country_id' => 1, 'type' => 'city', 'province' => 'Uíge', 'explore' => '/ao/empregos',
-    ],
-    'bie' => [
-        'slug' => 'vagas-de-emprego-em-bie',
-        'name' => 'Bié', 'country_id' => 1, 'type' => 'city', 'province' => 'Bié', 'explore' => '/ao/empregos',
-    ],
-    'moxico' => [
-        'slug' => 'vagas-de-emprego-em-moxico',
-        'name' => 'Moxico', 'country_id' => 1, 'type' => 'city', 'province' => 'Moxico', 'explore' => '/ao/empregos',
-    ],
-    'namibe' => [
-        'slug' => 'vagas-de-emprego-em-namibe',
-        'name' => 'Namibe', 'country_id' => 1, 'type' => 'city', 'province' => 'Namibe', 'explore' => '/ao/empregos',
-    ],
-    'cunene' => [
-        'slug' => 'vagas-de-emprego-em-cunene',
-        'name' => 'Cunene', 'country_id' => 1, 'type' => 'city', 'province' => 'Cunene', 'explore' => '/ao/empregos',
-    ],
-    'lunda-norte' => [
-        'slug' => 'vagas-de-emprego-em-lunda-norte',
-        'name' => 'Lunda Norte', 'country_id' => 1, 'type' => 'city', 'province' => 'Lunda Norte', 'explore' => '/ao/empregos',
-    ],
-    'lunda-sul' => [
-        'slug' => 'vagas-de-emprego-em-lunda-sul',
-        'name' => 'Lunda Sul', 'country_id' => 1, 'type' => 'city', 'province' => 'Lunda Sul', 'explore' => '/ao/empregos',
-    ],
-    'zaire' => [
-        'slug' => 'vagas-de-emprego-em-zaire',
-        'name' => 'Zaire', 'country_id' => 1, 'type' => 'city', 'province' => 'Zaire', 'explore' => '/ao/empregos',
-    ],
-    'bengo' => [
-        'slug' => 'vagas-de-emprego-em-bengo',
-        'name' => 'Bengo', 'country_id' => 1, 'type' => 'city', 'province' => 'Bengo', 'explore' => '/ao/empregos',
-    ],
-    'cuando-cubango' => [
-        'slug' => 'vagas-de-emprego-em-cuando-cubango',
-        'name' => 'Cuando Cubango', 'country_id' => 1, 'type' => 'city', 'province' => 'Cuando Cubango', 'explore' => '/ao/empregos',
+    'malaga' => [
+        'slug' => 'vagas-de-emprego-em-malaga',
+        'name' => 'Málaga', 'country_id' => 2, 'type' => 'city', 'province' => 'Málaga', 'explore' => '/es/empregos',
     ],
 
-    // ---- Mocambique: provincias ----
-    'maputo' => [
-        'slug' => 'vagas-de-emprego-em-maputo',
-        'name' => 'Maputo', 'country_id' => 3, 'type' => 'city', 'province' => 'Maputo', 'explore' => '/mz/empregos',
+    // ---- Franca: regioes e cidades ----
+    'paris' => [
+        'slug' => 'vagas-de-emprego-em-paris',
+        'name' => 'Paris', 'country_id' => 3, 'type' => 'city', 'province' => 'Paris', 'explore' => '/fr/empregos',
     ],
-    'gaza' => [
-        'slug' => 'vagas-de-emprego-em-gaza',
-        'name' => 'Gaza', 'country_id' => 3, 'type' => 'city', 'province' => 'Gaza', 'explore' => '/mz/empregos',
+    'lyon' => [
+        'slug' => 'vagas-de-emprego-em-lyon',
+        'name' => 'Lyon', 'country_id' => 3, 'type' => 'city', 'province' => 'Lyon', 'explore' => '/fr/empregos',
     ],
-    'inhambane' => [
-        'slug' => 'vagas-de-emprego-em-inhambane',
-        'name' => 'Inhambane', 'country_id' => 3, 'type' => 'city', 'province' => 'Inhambane', 'explore' => '/mz/empregos',
+    'marselha' => [
+        'slug' => 'vagas-de-emprego-em-marselha',
+        'name' => 'Marselha', 'country_id' => 3, 'type' => 'city', 'province' => 'Marseille', 'explore' => '/fr/empregos',
     ],
-    'sofala' => [
-        'slug' => 'vagas-de-emprego-em-sofala',
-        'name' => 'Sofala', 'country_id' => 3, 'type' => 'city', 'province' => 'Sofala', 'explore' => '/mz/empregos',
+    'toulouse' => [
+        'slug' => 'vagas-de-emprego-em-toulouse',
+        'name' => 'Toulouse', 'country_id' => 3, 'type' => 'city', 'province' => 'Toulouse', 'explore' => '/fr/empregos',
     ],
-    'manica' => [
-        'slug' => 'vagas-de-emprego-em-manica',
-        'name' => 'Manica', 'country_id' => 3, 'type' => 'city', 'province' => 'Manica', 'explore' => '/mz/empregos',
+    'bordeus' => [
+        'slug' => 'vagas-de-emprego-em-bordeus',
+        'name' => 'Bordéus', 'country_id' => 3, 'type' => 'city', 'province' => 'Bordeaux', 'explore' => '/fr/empregos',
     ],
-    'tete' => [
-        'slug' => 'vagas-de-emprego-em-tete',
-        'name' => 'Tete', 'country_id' => 3, 'type' => 'city', 'province' => 'Tete', 'explore' => '/mz/empregos',
-    ],
-    'zambezia' => [
-        'slug' => 'vagas-de-emprego-em-zambezia',
-        'name' => 'Zambézia', 'country_id' => 3, 'type' => 'city', 'province' => 'Zambézia', 'explore' => '/mz/empregos',
-    ],
-    'nampula' => [
-        'slug' => 'vagas-de-emprego-em-nampula',
-        'name' => 'Nampula', 'country_id' => 3, 'type' => 'city', 'province' => 'Nampula', 'explore' => '/mz/empregos',
-    ],
-    'cabo-delgado' => [
-        'slug' => 'vagas-de-emprego-em-cabo-delgado',
-        'name' => 'Cabo Delgado', 'country_id' => 3, 'type' => 'city', 'province' => 'Cabo Delgado', 'explore' => '/mz/empregos',
-    ],
-    'niassa' => [
-        'slug' => 'vagas-de-emprego-em-niassa',
-        'name' => 'Niassa', 'country_id' => 3, 'type' => 'city', 'province' => 'Niassa', 'explore' => '/mz/empregos',
+    'nantes' => [
+        'slug' => 'vagas-de-emprego-em-nantes',
+        'name' => 'Nantes', 'country_id' => 3, 'type' => 'city', 'province' => 'Nantes', 'explore' => '/fr/empregos',
     ],
 
 ];
