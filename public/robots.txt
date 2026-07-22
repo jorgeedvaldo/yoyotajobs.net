@@ -1,7 +1,7 @@
 User-agent: *
 Disallow: /admin/
 
-Sitemap: https://www.empregosyoyota.net/sitemap.xml
+Sitemap: https://www.yoyotajobs.net/sitemap.xml
 
 User-agent: 01h4x.com
 Disallow:/

@@ -1,7 +1,7 @@
 @extends('template.app')
-@section('title', 'Sobre')
-@section('description', 'É uma plataforma que reúne oportunidades de emprego no solo angolano, tendo como fonte principal o "Jornal de Angola", criada aos 5 de Dezembro de 2018, a Empregos Yoyota tem ajudado muita gente a encontrar empregos no solo angolano')
-@section('canonical_link', url('/about'))
+@section('title', __('pages.about_title'))
+@section('description', __('pages.about_description'))
+@section('canonical_link', lurl('about'))
 @section('content')
 <style>
     /* ==========================================================================
@@ -266,11 +266,11 @@
         <div class="row align-items-center">
             <div class="col-lg-8 mx-auto text-center">
                 <h1 class="hero-title">
-                    Sobre a <span class="highlight">Plataforma</span>
+                    {!! __('pages.about_hero_title') !!}
                 </h1>
-                
+
                 <p class="hero-subtitle mx-auto">
-                    Conheça a história, missão e equipe por trás da plataforma líder em recrutamento e seleção em Angola.
+                    {{ __('pages.about_hero_subtitle') }}
                 </p>
             </div>
         </div>
@@ -282,16 +282,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="section-title">O que é a Empregos Yoyota?</h2>
+                <h2 class="section-title">{{ __('pages.about_platform_title') }}</h2>
                 <div class="platform-content">
                     <p>
-                        É uma plataforma que reúne oportunidades de emprego no solo angolano, tendo como fonte principal o "Jornal de Angola". A Empregos Yoyota tem ajudado muita gente a encontrar empregos no solo angolano.
+                        {{ __('pages.about_platform_body') }}
                     </p>
                 </div>
-                
+
                 <div class="platform-highlight">
-                    <p class="platform-date">Criada aos 5 de Dezembro de 2018</p>
-                    <p class="mb-0">Desde então, temos sido uma ponte confiável entre candidatos e empregadores, facilitando milhares de conexões profissionais em Angola.</p>
+                    <p class="platform-date">{{ __('pages.about_platform_highlight_title') }}</p>
+                    <p class="mb-0">{{ __('pages.about_platform_highlight_body') }}</p>
                 </div>
             </div>
         </div>
