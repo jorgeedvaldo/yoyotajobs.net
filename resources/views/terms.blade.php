@@ -1,7 +1,7 @@
 @extends('template.app')
-@section('title', 'Termos e Condições')
-@section('description', 'É uma plataforma que reúne oportunidades de emprego no solo angolano, tendo como fonte principal o "Jornal de Angola", criada aos 5 de Dezembro de 2018, a Empregos Yoyota tem ajudado muita gente a encontrar empregos no solo angolano')
-@section('canonical_link', url('/terms'))
+@section('title', __('pages.terms_title'))
+@section('description', __('pages.terms_description'))
+@section('canonical_link', lurl('terms'))
 @section('content')
 <style>
     * {
@@ -476,11 +476,10 @@
     <div class="container">
         <div class="hero-content">
             <h1 class="hero-title">
-                Termos, Condições e<br>
-                Políticas de Uso
+                {!! __('pages.terms_hero_title') !!}
             </h1>
             <p class="hero-subtitle">
-                Transparência e confiança são fundamentais para nossa relação com você
+                {{ __('pages.terms_hero_subtitle') }}
             </p>
         </div>
     </div>
@@ -492,80 +491,75 @@
         <div class="content-container">
             
             <!-- Introdução -->
-            <h2 class="section-title">Termos e Condições de Uso</h2>
+            <h2 class="section-title">{{ __('pages.terms_intro_title') }}</h2>
             <div class="section-content">
-                <p>
-                    Bem-vindo ao Empregos Yoyota. Este site é uma plataforma que partilha oportunidades de emprego encontradas em fontes confiáveis. Nós não somos responsáveis pelo recrutamento ou seleção de candidatos para as oportunidades apresentadas. Nós apenas partilhamos informações que consideramos úteis e relevantes para ajudar as pessoas a encontrar emprego.
-                </p>
-                <p>
-                    Ao utilizar nossos serviços, você concorda com estes termos e condições. Por favor, leia-os cuidadosamente antes de usar nossa plataforma.
-                </p>
+                {!! __('pages.terms_intro_body') !!}
             </div>
 
             <!-- Conteúdo Disponível -->
-            <h3 class="subsection-title">Conteúdo Disponível</h3>
+            <h3 class="subsection-title">{{ __('pages.terms_content_title') }}</h3>
             <div class="subsection-content">
                 <p>
-                    Você está autorizado a usar o conteúdo apresentado neste site, desde que creditado corretamente ao nosso site. Por favor, mencione a fonte quando compartilhar informações obtidas em nosso site. Nós apreciamos sua consideração e colaboração em manter a integridade do nosso conteúdo.
+                    {{ __('pages.terms_content_body') }}
                 </p>
-                
+
                 <div class="highlight-box">
-                    <h4><i class="bi bi-info-circle me-2"></i>Importante</h4>
+                    <h4><i class="bi bi-info-circle me-2"></i>{{ __('pages.terms_content_important_title') }}</h4>
                     <p>
-                        Todas as informações sobre vagas de emprego são coletadas de fontes públicas e confiáveis. Recomendamos sempre verificar a autenticidade das oportunidades diretamente com as empresas anunciantes.
+                        {{ __('pages.terms_content_important_body') }}
                     </p>
                 </div>
 
-                <p>Os usuários podem:</p>
+                <p>{{ __('pages.terms_content_users_can_title') }}</p>
                 <ul>
-                    <li>Navegar e pesquisar vagas de emprego gratuitamente</li>
-                    <li>Compartilhar conteúdo desde que creditado adequadamente</li>
-                    <li>Utilizar nossos serviços premium mediante assinatura</li>
-                    <li>Entrar em contato conosco para esclarecimentos</li>
+                    <li>{{ __('pages.terms_content_users_can_1') }}</li>
+                    <li>{{ __('pages.terms_content_users_can_2') }}</li>
+                    <li>{{ __('pages.terms_content_users_can_3') }}</li>
+                    <li>{{ __('pages.terms_content_users_can_4') }}</li>
                 </ul>
             </div>
 
             <!-- Política de Privacidade -->
-            <h3 class="subsection-title">Política de Privacidade</h3>
+            <h3 class="subsection-title">{{ __('pages.terms_privacy_title') }}</h3>
             <div class="subsection-content">
                 <p>
-                    Nós valorizamos a privacidade de nossos usuários. Nós coletamos informações básicas apenas para fins de melhoria do site e entrega de conteúdo personalizado. Nós não compartilhamos as informações pessoais dos usuários com terceiros, exceto em casos em que seja exigido por lei.
+                    {{ __('pages.terms_privacy_body') }}
                 </p>
 
-                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">Informações que Coletamos:</h4>
+                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">{{ __('pages.terms_privacy_collect_title') }}</h4>
                 <ul>
-                    <li>Dados de navegação (páginas visitadas, tempo de permanência)</li>
-                    <li>Informações fornecidas voluntariamente (nome, email, CV)</li>
-                    <li>Dados técnicos (endereço IP, tipo de navegador)</li>
-                    <li>Preferências de busca e interações com o site</li>
+                    <li>{{ __('pages.terms_privacy_collect_1') }}</li>
+                    <li>{{ __('pages.terms_privacy_collect_2') }}</li>
+                    <li>{{ __('pages.terms_privacy_collect_3') }}</li>
+                    <li>{{ __('pages.terms_privacy_collect_4') }}</li>
                 </ul>
 
-                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">Como Utilizamos suas Informações:</h4>
+                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">{{ __('pages.terms_privacy_use_title') }}</h4>
                 <ul>
-                    <li>Melhorar a experiência do usuário em nossa plataforma</li>
-                    <li>Personalizar conteúdo e recomendações de vagas</li>
-                    <li>Enviar notificações sobre novas oportunidades (com seu consentimento)</li>
-                    <li>Analisar tendências de uso para aprimorar nossos serviços</li>
+                    <li>{{ __('pages.terms_privacy_use_1') }}</li>
+                    <li>{{ __('pages.terms_privacy_use_2') }}</li>
+                    <li>{{ __('pages.terms_privacy_use_3') }}</li>
+                    <li>{{ __('pages.terms_privacy_use_4') }}</li>
                 </ul>
             </div>
 
             <!-- Uso de Cookies -->
-            <h3 class="subsection-title">Uso de Cookies</h3>
+            <h3 class="subsection-title">{{ __('pages.terms_cookies_title') }}</h3>
             <div class="subsection-content">
                 <p>
-                    Este site usa cookies para melhorar a experiência do usuário e entregar conteúdo personalizado. Cookies são pequenos arquivos de texto que são armazenados no seu dispositivo quando você visita um site.
+                    {{ __('pages.terms_cookies_body') }}
                 </p>
 
-                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">Tipos de Cookies que Utilizamos:</h4>
+                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">{{ __('pages.terms_cookies_types_title') }}</h4>
                 <ul>
-                    <li><strong>Cookies Essenciais:</strong> Necessários para o funcionamento básico do site</li>
-                    <li><strong>Cookies de Performance:</strong> Ajudam-nos a entender como os visitantes interagem com o site</li>
-                    <li><strong>Cookies de Funcionalidade:</strong> Permitem que o site lembre suas preferências</li>
-                    <li><strong>Cookies de Marketing:</strong> Utilizados para entregar anúncios relevantes</li>
+                    <li>{!! __('pages.terms_cookies_type_1') !!}</li>
+                    <li>{!! __('pages.terms_cookies_type_2') !!}</li>
+                    <li>{!! __('pages.terms_cookies_type_3') !!}</li>
+                    <li>{!! __('pages.terms_cookies_type_4') !!}</li>
                 </ul>
 
                 <p>
-                    Você pode controlar e/ou deletar cookies conforme desejar. Você pode deletar todos os cookies que já estão no seu computador e pode configurar a maioria dos navegadores para impedir que sejam colocados.
+                    {{ __('pages.terms_cookies_control') }}
                 </p>
             </div>
 
