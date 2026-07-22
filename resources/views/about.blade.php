@@ -301,40 +301,40 @@
 <!-- Services Section -->
 <section class="services-section">
     <div class="container">
-        <h2 class="section-title">Nossos Serviços</h2>
+        <h2 class="section-title">{{ __('pages.about_services_title') }}</h2>
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-cursor-fill"></i>
                     </div>
-                    <h3 class="service-title">Faça sua candidatura num clique</h3>
+                    <h3 class="service-title">{{ __('pages.about_service_1_title') }}</h3>
                     <p class="service-description">
-                        Neste portal, além de você encontrar informações sobre vagas de emprego, também é possível candidatar-se às vagas via e-mail. Com um clique nós enviamos a sua candidatura ao e-mail do empregador.
+                        {{ __('pages.about_service_1_body') }}
                     </p>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 mb-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-file-earmark-text"></i>
                     </div>
-                    <h3 class="service-title">Peça-nos um currículo moderno</h3>
+                    <h3 class="service-title">{{ __('pages.about_service_2_title') }}</h3>
                     <p class="service-description">
-                        Sabemos a importância de ter um currículo moderno e atualizado, nós ajudamos você a ter um currículo que se destaque dos demais candidatos, e assim, tendo muita chance para ser escolhido/a na vaga.
+                        {{ __('pages.about_service_2_body') }}
                     </p>
                 </div>
             </div>
-            
+
             <div class="col-lg-4 mb-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-megaphone"></i>
                     </div>
-                    <h3 class="service-title">Publicite aqui o seu negócio ou serviço</h3>
+                    <h3 class="service-title">{{ __('pages.about_service_3_title') }}</h3>
                     <p class="service-description">
-                        Nós também ajudamos a divulgar o seu negócio ou serviço na nossa plataforma, fale connosco! Chegue a mais pessoas e expanda o seu negócio através da nossa rede.
+                        {{ __('pages.about_service_3_body') }}
                     </p>
                 </div>
             </div>
@@ -345,11 +345,11 @@
 <!-- Team Section -->
 <section class="team-section">
     <div class="container">
-        <h2 class="section-title">Nossa Equipe</h2>
+        <h2 class="section-title">{{ __('pages.about_team_title') }}</h2>
         <p class="section-subtitle">
-            Conheça as pessoas por trás do Empregos Yoyota, dedicadas a transformar o mercado de trabalho em Angola.
+            {{ __('pages.about_team_subtitle') }}
         </p>
-        
+
         <div class="team-grid">
             <!-- CEO -->
             <div class="team-card">
@@ -357,9 +357,9 @@
                     <i class="bi bi-person-circle"></i>
                 </div>
                 <h3 class="team-name">Edivaldo Jorge</h3>
-                <p class="team-role">CEO & Fundador</p>
+                <p class="team-role">{{ __('pages.about_team_1_role') }}</p>
                 <p class="team-description">
-                    Visionário e empreendedor, Edivaldo lidera a estratégia e visão do Empregos Yoyota. Com vasta experiência em tecnologia e recursos humanos, ele é responsável por guiar a empresa rumo ao futuro do recrutamento em Angola.
+                    {{ __('pages.about_team_1_body') }}
                 </p>
                 <div class="team-social">
                     <a href="http://linkedin.com/in/jorgeedvaldo"><i class="bi bi-linkedin"></i></a>
@@ -367,16 +367,16 @@
                     <a href="http://instagram.com/jorgeedvaldo"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
-            
+
             <!-- Gestor de Conteúdos -->
             <div class="team-card">
                 <div class="team-photo">
                     <i class="bi bi-person-circle"></i>
                 </div>
                 <h3 class="team-name">Gelson Somano</h3>
-                <p class="team-role">Gestor de Conteúdos</p>
+                <p class="team-role">{{ __('pages.about_team_2_role') }}</p>
                 <p class="team-description">
-                    Especialista em comunicação e marketing digital, Gelson é responsável por toda a estratégia de conteúdo da plataforma. Ele garante que as informações sejam relevantes, atualizadas e úteis para nossa comunidade de usuários.
+                    {{ __('pages.about_team_2_body') }}
                 </p>
                 <div class="team-social">
                     <a href="https://www.linkedin.com/in/gelson-somano-44a130293/"><i class="bi bi-linkedin"></i></a>
@@ -390,9 +390,9 @@
 <section class="mission-section">
     <div class="container">
         <div class="mission-content">
-            <h2 class="mission-title">Nossa Missão</h2>
+            <h2 class="mission-title">{{ __('pages.about_mission_title') }}</h2>
             <p class="mission-text">
-                Democratizar o acesso ao emprego em Angola, conectando talentos às melhores oportunidades através de uma plataforma inovadora, eficiente e acessível. Desde 2018, trabalhamos para que cada pessoa tenha a chance de encontrar o emprego dos seus sonhos.
+                {{ __('pages.about_mission_body') }}
             </p>
         </div>
     </div>
