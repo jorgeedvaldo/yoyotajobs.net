@@ -564,60 +564,60 @@
             </div>
 
             <!-- Serviços Premium -->
-            <h3 class="subsection-title">Serviços Premium</h3>
+            <h3 class="subsection-title">{{ __('pages.terms_premium_title') }}</h3>
             <div class="subsection-content">
                 <p>
-                    Oferecemos serviços premium, incluindo candidaturas automáticas, criação de CV profissional e consultoria de carreira. Estes serviços são cobrados conforme os planos apresentados em nossa plataforma.
+                    {{ __('pages.terms_premium_body') }}
                 </p>
 
-                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">Condições dos Serviços Premium:</h4>
+                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">{{ __('pages.terms_premium_conditions_title') }}</h4>
                 <ul>
-                    <li>Pagamento antecipado conforme plano escolhido</li>
-                    <li>Cancelamento possível a qualquer momento</li>
-                    <li>Reembolso conforme política específica de cada serviço</li>
-                    <li>Suporte prioritário para assinantes</li>
+                    <li>{{ __('pages.terms_premium_conditions_1') }}</li>
+                    <li>{{ __('pages.terms_premium_conditions_2') }}</li>
+                    <li>{{ __('pages.terms_premium_conditions_3') }}</li>
+                    <li>{{ __('pages.terms_premium_conditions_4') }}</li>
                 </ul>
 
                 <div class="highlight-box">
-                    <h4><i class="bi bi-shield-check me-2"></i>Garantia de Qualidade</h4>
+                    <h4><i class="bi bi-shield-check me-2"></i>{{ __('pages.terms_premium_guarantee_title') }}</h4>
                     <p>
-                        Comprometemo-nos a fornecer serviços de alta qualidade. Caso não esteja satisfeito, entre em contato conosco dentro de 7 dias para resolvermos a situação.
+                        {{ __('pages.terms_premium_guarantee_body') }}
                     </p>
                 </div>
             </div>
 
             <!-- Responsabilidades -->
-            <h3 class="subsection-title">Responsabilidades e Limitações</h3>
+            <h3 class="subsection-title">{{ __('pages.terms_liability_title') }}</h3>
             <div class="subsection-content">
                 <p>
-                    O Empregos Yoyota atua como intermediário entre candidatos e oportunidades de emprego. Não garantimos a contratação nem somos responsáveis pelos processos seletivos das empresas anunciantes.
+                    {{ __('pages.terms_liability_body') }}
                 </p>
 
-                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">Limitações de Responsabilidade:</h4>
+                <h4 style="font-weight: 600; margin: 2rem 0 1rem 0;">{{ __('pages.terms_liability_limits_title') }}</h4>
                 <ul>
-                    <li>Não somos responsáveis por decisões de contratação das empresas</li>
-                    <li>Não garantimos a veracidade de todas as informações de terceiros</li>
-                    <li>Não nos responsabilizamos por danos indiretos ou consequenciais</li>
-                    <li>Nossa responsabilidade é limitada ao valor pago pelos serviços premium</li>
+                    <li>{{ __('pages.terms_liability_limits_1') }}</li>
+                    <li>{{ __('pages.terms_liability_limits_2') }}</li>
+                    <li>{{ __('pages.terms_liability_limits_3') }}</li>
+                    <li>{{ __('pages.terms_liability_limits_4') }}</li>
                 </ul>
             </div>
 
             <!-- Modificações -->
-            <h3 class="subsection-title">Modificações dos Termos</h3>
+            <h3 class="subsection-title">{{ __('pages.terms_changes_title') }}</h3>
             <div class="subsection-content">
                 <p>
-                    Reservamo-nos o direito de modificar estes termos e condições a qualquer momento. As alterações entrarão em vigor imediatamente após a publicação no site. Recomendamos que revise periodicamente esta página para se manter informado sobre eventuais mudanças.
+                    {{ __('pages.terms_changes_body_1') }}
                 </p>
                 <p>
-                    O uso continuado de nossos serviços após as modificações constitui aceitação dos novos termos.
+                    {{ __('pages.terms_changes_body_2') }}
                 </p>
             </div>
 
             <!-- Lei Aplicável -->
-            <h3 class="subsection-title">Lei Aplicável</h3>
+            <h3 class="subsection-title">{{ __('pages.terms_law_title') }}</h3>
             <div class="subsection-content">
                 <p>
-                    Estes termos e condições são regidos pelas leis da República de Angola. Qualquer disputa relacionada ao uso deste site será resolvida nos tribunais competentes de Angola.
+                    {{ __('pages.terms_law_body') }}
                 </p>
             </div>
 
@@ -628,13 +628,13 @@
 <!-- Contact Info -->
 <section class="contact-info">
     <div class="container">
-        <h3 class="contact-title">Dúvidas sobre nossos Termos?</h3>
+        <h3 class="contact-title">{{ __('pages.terms_contact_title') }}</h3>
         <p class="contact-text">
-            Entre em contato conosco para esclarecimentos sobre nossos termos e políticas
+            {{ __('pages.terms_contact_text') }}
         </p>
-        <a href="mailto:geral@empregosyoyota.net" class="contact-email">
+        <a href="mailto:geral@yoyotajobs.net" class="contact-email">
             <i class="bi bi-envelope me-2"></i>
-            geral@empregosyoyota.net
+            geral@yoyotajobs.net
         </a>
     </div>
 </section>
@@ -644,7 +644,7 @@
     <div class="container">
         <p>
             <i class="bi bi-calendar-event me-2"></i>
-            Última atualização: 30 de Janeiro de 2024
+            {{ __('pages.terms_last_updated') }}
         </p>
     </div>
 </section>
